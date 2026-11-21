@@ -1,1 +1,15 @@
+Vercel: report api-checking-1.vercel.app at vercel.com/abuse. It serves the scripts the editor task pipes into a shell.
+The IP 88.216.57.122: look up its hosting provider with a whois tool and send an abuse report.
+Law enforcement: in the US, file at ic3.gov. Other countries have their own national cybercrime reporting sites.
+Include these indicators in any report:
 
+Indicator	Value
+Delivered zip (SHA-256)
+FADEC17B63BF4E001E6005EE79FE9E34964033F64DA6C766BE8D21EB24CA2A9B
+Payload host
+api-checking-1.vercel.app (/api/settings/windows, /mac, /linux)
+Command server
+http://88.216.57.122:8080/api/runners/start/javascript
+Campaign ID in loader
+6cd9a1e17f045d11ec4e0b102bc04f9d
+The PDF report and the lurescan output in security-report\lurescan-zyranova\ are good attachments.
